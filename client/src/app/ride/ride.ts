@@ -1,9 +1,11 @@
+import {User} from "../users/user";
+
 export class Ride {
   driver: {User, vehicle};
-  riders: [Users];
+  riders: User[];
   destination: string;
   origin: string;
   roundTrip: boolean;
-  departure: dateTime;
+  departure: Date;
   notes: string;
 }
