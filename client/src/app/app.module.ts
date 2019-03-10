@@ -14,6 +14,7 @@ import {CustomModule} from './custom.module';
 import {AddUserComponent} from './users/add-user.component';
 import { RideComponent } from './ride/ride.component';
 import { RideListComponent } from './ride/ride-list.component';
+import {RideListService} from "./ride/ride-list.service";
 
 
 @NgModule({
@@ -34,6 +35,8 @@ import { RideListComponent } from './ride/ride-list.component';
   ],
   providers: [
     UserListService,
+    {provide: APP_BASE_HREF, useValue: '/'},
+    RideListService,
     {provide: APP_BASE_HREF, useValue: '/'},
   ],
   entryComponents: [
