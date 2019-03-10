@@ -1,1 +1,13 @@
+mat-nav-list{
+  background-color: red;
+}
 
+mat-toolbar {
+  background: red;
+  color: white;
+}
+
+#navbar {
+  background: red;
+  color: white;
+}

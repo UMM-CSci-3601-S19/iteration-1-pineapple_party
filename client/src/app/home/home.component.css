@@ -1,0 +1,29 @@
+
+.mat-toolbar.mat-primary {
+  background: green;
+  color: white;
+}
+#searchBox {
+  background: green;
+  width: 250px;
+  float:right;
+  margin: 30px;
+}
+.searchfields {
+  padding-left: 20px;
+}
+#timeField{
+  margin-left: 20px;
+}
+#dateField{
+  margin-left: 20px;
+}
+#destinationField{
+  margin-left: 20px;
+  margin-bottom: 20px;
+}
+#submitSearch{
+  background-color: blue;
+  align-self: center;
+}
+
