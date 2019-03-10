@@ -1,7 +1,6 @@
 export interface User {
-  _id: string;
+  vehicles: string;
   name: string;
-  age: number;
-  company: string;
-  email: string;
+  phone: [string];
+  email: string //unique;
 }

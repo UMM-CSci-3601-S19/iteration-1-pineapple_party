@@ -3,11 +3,13 @@ import {RideListService} from './ride-list.service';
 import {Ride} from './ride';
 import {Observable} from 'rxjs/Observable';
 import {MatDialog} from '@angular/material';
+
 @Component({
   selector: 'ride-list-component',
   templateUrl: 'ride-list.component.html',
   styleUrls: ['./ride-list.component.css']
 })
+
 export class RideListComponent implements OnInit {
 
   public rides: Ride[];
