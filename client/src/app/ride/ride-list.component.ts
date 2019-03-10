@@ -6,7 +6,7 @@ import {MatDialog} from '@angular/material';
 
 @Component({
   selector: 'ride-list-component',
-  templateUrl: 'ride-list.component.html',
+  templateUrl: './ride-list.component.html',
   styleUrls: ['./ride-list.component.css']
 })
 

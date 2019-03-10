@@ -8,7 +8,7 @@ import {RideListComponent} from "./ride/ride-list.component";
 // Route Configuration
 export const routes: Routes = [
   {path: '', component: HomeComponent},
-  {path: 'rides', component: RideListComponent}
+  {path: 'ride', component: RideListComponent}
 ];
 
 export const Routing: ModuleWithProviders = RouterModule.forRoot(routes);
