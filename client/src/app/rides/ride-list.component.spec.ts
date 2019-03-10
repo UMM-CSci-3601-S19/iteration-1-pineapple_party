@@ -6,6 +6,9 @@ import { CustomModule } from '../custom.module';
 import { RideListComponent } from './ride-list.component';
 import { RideListService } from "./ride-list.service";
 
+import 'rxjs/add/observable/of';
+import 'rxjs/add/operator/do';
+
 describe('Display rides', () => {
   let rideList: RideListComponent;
   let fixture: ComponentFixture<RideListComponent>;
@@ -55,7 +58,7 @@ describe('Display rides', () => {
 });
 
   beforeEach(async(() => {
-    Testbed.compileComponent().then(() => {
+    TestBed.compileComponents().then(() => {
       fixture = TestBed.createComponent(RideListComponent);
       rideList = fixture.componentInstance;
       fixture.detectChanges();
