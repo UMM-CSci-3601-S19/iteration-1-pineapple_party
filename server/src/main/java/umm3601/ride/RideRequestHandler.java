@@ -3,7 +3,7 @@ package umm3601.ride;
 import org.bson.Document;
 import spark.Request;
 import spark.Response;
-import umm3601.user.UserController;
+import umm3601.ride.RideController;
 
 public class RideRequestHandler {
 
@@ -49,7 +49,7 @@ public class RideRequestHandler {
    */
   public String getRides(Request req, Response res) {
     res.type("application/json");
-    return rideController.getRides(req.queryMap().toMap());
+    return rideController.getRide(req.queryMap().toMap());
   }
 
 
