@@ -3,7 +3,7 @@ package umm3601.ride;
 import org.bson.Document;
 import spark.Request;
 import spark.Response;
-import umm3601.user.UserController;
+import umm3601.ride.RideController;
 
 public class RideRequestHandler {
 
@@ -49,11 +49,11 @@ public class RideRequestHandler {
    */
   public String getRides(Request req, Response res) {
     res.type("application/json");
-    return rideController.getRides(req.queryMap().toMap());
+    return rideController.getRiders(req.queryMap().toMap());
   }
 
 
-  /**
+  /*
    * Method called from Server when the 'api/users/new' endpoint is received.
    * Gets specified user info from request and calls addNewUser helper method
    * to append that info to a document
