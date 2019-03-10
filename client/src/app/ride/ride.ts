@@ -1,4 +1,4 @@
-import {User} from "../users/user";
+import {Ride} from "../ride/ride";
 
 export class Ride {
   _id: string;
