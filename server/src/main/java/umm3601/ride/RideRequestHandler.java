@@ -53,7 +53,7 @@ public class RideRequestHandler {
   }
 
 
-  /**
+  /*
    * Method called from Server when the 'api/users/new' endpoint is received.
    * Gets specified user info from request and calls addNewUser helper method
    * to append that info to a document
