@@ -15,7 +15,7 @@ export class RideListService {
   }
 
   getRides(rideDate?: string): Observable<Ride[]> {
-    this.filterByDate(rideDate);
+    //this.filterByDate(rideDate);
     return this.http.get<Ride[]>(this.rideUrl);
   }
 
