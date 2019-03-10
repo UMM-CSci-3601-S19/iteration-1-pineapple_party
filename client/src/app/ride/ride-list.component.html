@@ -1,3 +1,40 @@
-<p>
-  ride-list works!
-</p>
+<div>
+  <button id="addNewUser" mat-raised-button (click)="openDialog()">Add New User</button>
+</div>
+
+
+<div layout-gt-sm="row">
+  <div flex-gt-sm="80" flex-offset-gt-sm="10">
+    <mat-card>
+      <mat-card-title id="ride-list-title">Users</mat-card-title>
+      <mat-divider></mat-divider>
+      <mat-card-content>
+            <mat-icon>close</mat-icon>
+          </button>
+        </mat-form-field>
+        <button mat-raised-button id="submit" color="primary" #input type="button" (click)="loadService()">Submit
+        </button>
+
+        <mat-accordion *ngIf="rides; else ridesError">
+          <mat-expansion-panel #elem class="rides" [id]="ride.rides" [expanded]="this.isHighlighted(ride)">
+            <mat-expansion-panel-header>
+              <mat-panel-title matTooltip="rides: {{ride.rides}}">{{ride.name}}</mat-panel-title>
+
+            </mat-expansion-panel-header>
+
+          </mat-expansion-panel>
+        </mat-accordion>
+        <!-- Maybe this should be a pop-up instead of just a text message? Not sure. -->
+        <ng-template #ridesError>
+          <mat-error>
+            There was a problem loading the rides. Possibly the server is down or perhaps there are network
+            issues.
+          </mat-error>
+          <mat-error>
+            Please wait a bit and try again or start the server.
+          </mat-error>
+        </ng-template>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

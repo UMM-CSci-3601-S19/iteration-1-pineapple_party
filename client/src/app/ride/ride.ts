@@ -1,7 +1,7 @@
 import {User} from "../users/user";
 
 export class Ride {
-  driver: {User, vehicle};
+  driver: string;
   riders: User[];
   destination: string;
   origin: string;
