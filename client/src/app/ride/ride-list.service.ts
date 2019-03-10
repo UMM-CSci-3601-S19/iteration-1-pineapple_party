@@ -23,31 +23,31 @@ export class RideListService {
     return this.http.get<Ride>(this.rideUrl + '/' + id);
   }
 
-  filterByDate(rideDate?: string): void {
-    if (!(rideDate == null || rideDate === '')) {
-      if (this.parameterPresent('company=')) {
-        // there was a previous search by company that we need to clear
-        this.removeParameter('company=');
-      }
-      if (this.rideUrl.indexOf('?') !== -1) {
-        // there was already some information passed in this url
-        this.rideUrl += 'company=' + rideDate + '&';
-      } else {
-        // this was the first bit of information to pass in the url
-        this.rideUrl += '?company=' + rideDate + '&';
-      }
-    } else {
-      // there was nothing in the box to put onto the URL... reset
-      if (this.parameterPresent('company=')) {
-        let start = this.rideUrl.indexOf('company=');
-        const end = this.rideUrl.indexOf('&', start);
-        if (this.rideUrl.substring(start - 1, start) === '?') {
-          start = start - 1;
-        }
-        this.rideUrl = this.rideUrl.substring(0, start) + this.rideUrl.substring(end + 1);
-      }
-    }
-  }
+  // filterByDate(rideDate?: string): void {
+  //   if (!(rideDate == null || rideDate === '')) {
+  //     if (this.parameterPresent('company=')) {
+  //       // there was a previous search by company that we need to clear
+  //       this.removeParameter('company=');
+  //     }
+  //     if (this.rideUrl.indexOf('?') !== -1) {
+  //       // there was already some information passed in this url
+  //       this.rideUrl += 'company=' + rideDate + '&';
+  //     } else {
+  //       // this was the first bit of information to pass in the url
+  //       this.rideUrl += '?company=' + rideDate + '&';
+  //     }
+  //   } else {
+  //     // there was nothing in the box to put onto the URL... reset
+  //     if (this.parameterPresent('company=')) {
+  //       let start = this.rideUrl.indexOf('company=');
+  //       const end = this.rideUrl.indexOf('&', start);
+  //       if (this.rideUrl.substring(start - 1, start) === '?') {
+  //         start = start - 1;
+  //       }
+  //       this.rideUrl = this.rideUrl.substring(0, start) + this.rideUrl.substring(end + 1);
+  //     }
+  //   }
+  // }
   private parameterPresent(searchParam: string) {
     return this.rideUrl.indexOf(searchParam) !== -1;
   }
