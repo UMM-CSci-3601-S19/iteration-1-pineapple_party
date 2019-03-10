@@ -28,15 +28,14 @@
         <!--<button mat-raised-button id="submit" color="primary" #input type="button" (click)="loadService()">Submit-->
         <!--</button>-->
 
-        <mat-accordion *ngIf="ride; else rideError">
-          <mat-expansion-panel #elem class="ride" [id]="ride.driver" [expanded]="this.isHighlighted(ride)"
-                               *ngFor="let ride of this.filterRides(rideDriver, rideAge)">
+        <mat-accordion *ngIf="rides; else rideError">
+          <mat-expansion-panel #elem class="ride" [id]="rides.driver" [expanded]="this.isHighlighted(ride)"
+                               *ngFor="let ride of this.filterRides()">
             <mat-expansion-panel-header>
-              <mat-panel-title matTooltip="email: {{ride.email}}">{{ride.driver}}</mat-panel-title>
+              <!--<mat-panel-title matTooltip="email: {{ride.email}}">{{ride.driver}}</mat-panel-title>-->
 
             </mat-expansion-panel-header>
-            <mat-panel-description>Works for {{ride.company}}</mat-panel-description>
-            <mat-panel-description>Age: {{ride.age}} years old</mat-panel-description>
+            <mat-panel-description>Driver: {{ride.driver}}</mat-panel-description>
           </mat-expansion-panel>
         </mat-accordion>
         <!-- Maybe this should be a pop-up instead of just a text message? Not sure. -->
