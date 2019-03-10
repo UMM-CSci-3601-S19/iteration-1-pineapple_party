@@ -5,7 +5,7 @@ import {Observable} from 'rxjs/Observable';
 import {MatDialog} from '@angular/material';
 @Component({
   selector: 'ride-list-component',
-  templateUrl: './ride-list.component.html',
+  templateUrl: 'ride-list.component.html',
   styleUrls: ['./ride-list.component.css']
 })
 export class RideListComponent implements OnInit {
