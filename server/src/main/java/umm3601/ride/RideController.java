@@ -27,7 +27,8 @@ public class RideController {
    * @param database the database containing user data
    */
   public RideController(MongoDatabase database) {
-    rideCollection = database.getCollection("riders");
+
+    rideCollection = database.getCollection("rides");
   }
 
   /**
@@ -39,11 +40,11 @@ public class RideController {
    * and `null` if no user with that ID is found
    */
   public String getRide(String id) {
-    FindIterable<Document> jsonRiders
+    FindIterable<Document> jsonRides
       = rideCollection
       .find(eq("_id", new ObjectId(id)));
 
-    Iterator<Document> iterator = jsonRiders.iterator();
+    Iterator<Document> iterator = jsonRides.iterator();
     if (iterator.hasNext()) {
       Document ride = iterator.next();
       return ride.toJson();
@@ -63,7 +64,7 @@ public class RideController {
    * @param queryParams the query parameters from the request
    * @return an array of Users in a JSON formatted string
    */
-  public String getRiders(Map<String, String[]> queryParams) {
+  public String getRides(Map<String, String[]> queryParams) {
 
     Document filterDoc = new Document();
 //
