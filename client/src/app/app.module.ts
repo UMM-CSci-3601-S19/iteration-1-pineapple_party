@@ -9,8 +9,8 @@ import {Routing} from './app.routes';
 import {APP_BASE_HREF} from '@angular/common';
 
 import {CustomModule} from './custom.module';
-import { RideComponent } from './rides/ride.component';
-import { RideListComponent } from './rides/ride-list.component';
+import {RideComponent} from './rides/ride.component';
+import {RideListComponent} from './rides/ride-list.component';
 import {RideListService} from "./rides/ride-list.service";
 
 
@@ -29,8 +29,6 @@ import {RideListService} from "./rides/ride-list.service";
     RideListComponent
   ],
   providers: [
-    RideListService,
-    {provide: APP_BASE_HREF, useValue: '/'},
     RideListService,
     {provide: APP_BASE_HREF, useValue: '/'},
   ],
