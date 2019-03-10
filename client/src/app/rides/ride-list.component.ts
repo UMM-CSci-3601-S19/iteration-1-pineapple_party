@@ -20,10 +20,8 @@ export class RideListComponent implements OnInit {
   public rideDriver: string;
   public rideRiders: string;
   public rideDestination: string;
-  public rideOrigin: string;
-  public rideRoundTrip: boolean;
-  public rideDeparture: Date;
-  public rideNotes: string;
+  public rideDeparture: string;
+
 
   // The ID of the
   private highlightedID: string = '';
@@ -35,6 +33,26 @@ export class RideListComponent implements OnInit {
 
   isHighlighted(ride: Ride): boolean {
     return ride.destination['$oid'] === this.highlightedID;
+  }
+
+  public filterRides(searchDeparture: string, searchDestination: string): Ride[] {
+    this.filteredRides = this.rides;
+    if (searchDeparture != null) {
+      searchDeparture = searchDeparture.toLocaleLowerCase();
+      this.filteredRides = this.filteredRides.filter(ride => {
+        return !searchDeparture || ride.departure.toLowerCase().indexOf(searchDeparture) !== -1;
+      });
+    }
+
+    if (searchDestination != null) {
+      searchDestination = searchDestination.toLocaleLowerCase();
+      this.filteredRides = this.filteredRides.filter(ride => {
+        return !searchDestination || ride.destination.toLowerCase().indexOf(searchDestination) !== -1;
+      });
+    }
+
+    return this.filteredRides;
+
   }
 
 

@@ -1,4 +1,4 @@
-import { async, ComponentFixture, getTestBed, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, async } from '@angular/core/testing';
 import { Ride } from './ride';
 import { Observable } from "rxjs/Observable";
 import { CustomModule } from '../custom.module';
@@ -7,7 +7,7 @@ import { RideListComponent } from './ride-list.component';
 import { RideListService } from "./ride-list.service";
 
 describe('Display rides', () => {
-  let component: RideListComponent;
+  let rideList: RideListComponent;
   let fixture: ComponentFixture<RideListComponent>;
 
   let rideListServiceStub: {
@@ -47,7 +47,7 @@ describe('Display rides', () => {
       ])
     };
 
-  TestBed.comfigureTestingModule({
+  TestBed.configureTestingModule({
     imports:[CustomModule],
     declarations: [RideListComponent],
     providers: [{provide: RideListService, useValue: rideListServiceStub}]

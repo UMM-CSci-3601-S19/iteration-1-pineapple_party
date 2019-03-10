@@ -3,8 +3,8 @@ import DateTimeFormat = Intl.DateTimeFormat;
 
 export class Ride {
   _id: string;
-  driver: {User, vehicle};
-  riders: User[];
+  driver: string;
+  riders: string[];
   destination: string;
   origin: string;
   roundTrip: boolean;
