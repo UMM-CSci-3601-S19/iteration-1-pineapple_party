@@ -36,6 +36,28 @@ export class RideListComponent implements OnInit {
   isHighlighted(ride: Ride): boolean {
     return ride.destination['$oid'] === this.highlightedID;
   }
+  public filterRides(): Ride[] {
+
+    this.filteredRides = this.rides;
+
+    // // Filter by name
+    // if (searchName != null) {
+      // searchName = searchName.toLocaleLowerCase();
+
+      // this.filteredRides = this.filteredRides.filter(user => {
+    //     return !searchName || user.name.toLowerCase().indexOf(searchName) !== -1;
+    //   });
+    // }
+    //
+    // // Filter by age
+    // if (searchAge != null) {
+    //   this.filteredUsers = this.filteredUsers.filter(user => {
+    //     return !searchAge || user.age == searchAge;
+    //   });
+    // }
+
+    return this.filteredRides;
+  }
 
 
   refreshRides(): Observable<Ride[]> {
@@ -44,7 +66,7 @@ export class RideListComponent implements OnInit {
     rides.subscribe(
       rides => {
         this.rides = rides;
-        // this.filterRides(this.rideDrive, this.rideAge);
+        this.filterRides();
       },
       err => {
         console.log(err);
