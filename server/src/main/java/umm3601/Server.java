@@ -67,6 +67,7 @@ public class Server {
 
     get("api/rides", rideRequestHandler::getRides);
     get("api/rides/:id", rideRequestHandler::getRideJSON);
+    post("api/todos/new",rideRequestHandler::addNewRide);
 
 
     // An example of throwing an unhandled exception so you can see how the
@@ -92,6 +93,7 @@ public class Server {
 
   // Enable GZIP for all responses
   private static void addGzipHeader(Request request, Response response) {
+
     response.header("Content-Encoding", "gzip");
   }
 }
