@@ -17,6 +17,10 @@
                  (input)="rideOrigin = $event.target.value">
         </mat-form-field>
         <mat-form-field>
+          <input matInput id="rideDestination" #input type="text" placeholder="End Point"
+                 (input)="rideDestination = $event.target.value">
+        </mat-form-field>
+        <mat-form-field>
           <input matInput id="rideRoundTrip" #input type="text" placeholder="Round Trip"
                  [(ngModel)]="rideRoundTrip"/>
           <button mat-button id="destinationClearSearch" type="button" *ngIf="rideDestination" matSuffix mat-icon-button

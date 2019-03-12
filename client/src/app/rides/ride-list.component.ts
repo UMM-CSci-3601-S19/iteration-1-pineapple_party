@@ -37,7 +37,7 @@ export class RideListComponent implements OnInit {
     return ride.destination['$oid'] === this.highlightedID;
   }
 
-  public filterRides(searchDeparture: string, searchDestination: string, searchRoundTrip: boolean, searchDriver: string): Ride[] {
+  public filterRides(searchDeparture: string, searchDestination: string, searchRoundTrip: boolean, searchDriver: string, searchOrigin: string): Ride[] {
     this.filteredRides = this.rides;
     if (searchDeparture != null) {
       searchDeparture = searchDeparture.toLocaleLowerCase();
@@ -57,6 +57,13 @@ export class RideListComponent implements OnInit {
       searchDriver = searchDriver.toLocaleLowerCase();
       this.filteredRides = this.filteredRides.filter(ride => {
         return !searchDriver || ride.driver.toLowerCase().indexOf(searchDriver) !== -1;
+      });
+    }
+
+    if (searchOrigin != null) {
+      searchOrigin = searchOrigin.toLocaleLowerCase();
+      this.filteredRides = this.filteredRides.filter(ride => {
+        return !searchOrigin || ride.origin.toLowerCase().indexOf(searchOrigin) !== -1;
       });
     }
 
@@ -84,7 +91,7 @@ export class RideListComponent implements OnInit {
     rides.subscribe(
       rides => {
         this.rides = rides;
-        this.filterRides(this.rideDeparture, this.rideDestination, this.rideRoundTrip, this.rideDriver,);
+        this.filterRides(this.rideDeparture, this.rideDestination, this.rideRoundTrip, this.rideDriver, this.rideOrigin,);
       },
       err => {
         console.log(err);
