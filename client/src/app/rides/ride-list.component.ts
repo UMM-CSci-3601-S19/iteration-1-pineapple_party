@@ -38,7 +38,7 @@ export class RideListComponent implements OnInit {
   }
 
   openDialog(): void {
-    const newRide: Ride = {_id: '', driver: '',destination: '', origin: '',roundTrip: null, departure: '', notes: ''};
+    const newRide: Ride = {_id: '', driver: '',destination: '', origin: '',/*roundTrip: null,*/ departure: ''/* notes: ''*/};
     const dialogRef = this.dialog.open(AddRideComponent, {
       width: '500px',
       data: {ride: newRide}
