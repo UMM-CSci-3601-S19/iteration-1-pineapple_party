@@ -49,7 +49,6 @@ public class RideController {
       Document ride = iterator.next();
       return ride.toJson();
     } else {
-      // We didn't find the desired user
       return null;
     }
   }
@@ -99,31 +98,22 @@ public class RideController {
   }
 
 
-  /**
-   * Helper method which appends received user information to the to-be added document
-   *
-   * @param name the name of the new user
-   * @param age the age of the new user
-   * @param company the company the new user works for
-   * @param email the email of the new user
-   * @return boolean after successfully or unsuccessfully adding a user
-   */
-//  public String addNewUser(String name, int age, String company, String email) {
-//
-//    Document newUser = new Document();
-//    newUser.append("name", name);
-//    newUser.append("age", age);
-//    newUser.append("company", company);
-//    newUser.append("email", email);
-//
-//    try {
-//      userCollection.insertOne(newUser);
-//      ObjectId id = newUser.getObjectId("_id");
-//      System.err.println("Successfully added new user [_id=" + id + ", name=" + name + ", age=" + age + " company=" + company + " email=" + email + ']');
-//      return id.toHexString();
-//    } catch (MongoException me) {
-//      me.printStackTrace();
-//      return null;
-//    }
-//  }
+  public String addNewRide(String driver, String destination, String origin, String departure) {
+
+    Document newRide = new Document();
+    newRide.append("driver", driver);
+    newRide.append("destintion", destination);
+    newRide.append("origin", origin);
+    newRide.append("departure", departure);
+
+    try {
+      rideCollection.insertOne(newRide);
+      ObjectId id = newRide.getObjectId("_id");
+      System.err.println("Successfully added new ride [_id=" + id + ", driver=" + driver + ", destintion=" + destination + " origin=" + origin + " departure=" + departure + ']');
+      return id.toHexString();
+    } catch (MongoException me) {
+      me.printStackTrace();
+      return null;
+    }
+  }
 }
