@@ -53,6 +53,26 @@ export class RideListComponent implements OnInit {
       });
     }
 
+    if (searchDriver != null) {
+      searchDriver = searchDriver.toLocaleLowerCase();
+      this.filteredRides = this.filteredRides.filter(ride => {
+        return !searchDriver || ride.driver.toLowerCase().indexOf(searchDriver) !== -1;
+      });
+    }
+
+    if (searchRoundTrip != null) {
+      //searchRoundTrip = searchRoundTrip.toLocaleLowerCase();
+      this.filteredRides = this.filteredRides.filter(ride => {
+        if (searchRoundTrip == true) {
+          return !searchRoundTrip || ride.roundTrip == true;
+        }
+        if (searchRoundTrip == false) {
+          return !searchRoundTrip || ride.roundTrip == false;
+        }
+
+      });
+    }
+
     return this.filteredRides;
 
   }
@@ -64,7 +84,7 @@ export class RideListComponent implements OnInit {
     rides.subscribe(
       rides => {
         this.rides = rides;
-        this.filterRides(this.rideDeparture, this.rideDestination, this.rideRoundTrip, this.rideDriver);
+        this.filterRides(this.rideDeparture, this.rideDestination, this.rideRoundTrip, this.rideDriver,);
       },
       err => {
         console.log(err);
