@@ -28,7 +28,7 @@ import {AddRideComponent} from "./rides/add-ride.component";
    // UserComponent,
     RideComponent,
     RideListComponent,
-    AddRideComponent
+    AddRideComponent,
   ],
   providers: [
     RideListService,
