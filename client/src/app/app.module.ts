@@ -34,7 +34,9 @@ import {AddRideComponent} from "./rides/add-ride.component";
     RideListService,
     {provide: APP_BASE_HREF, useValue: '/'},
   ],
-
+  entryComponents: [
+    AddRideComponent,
+  ],
   bootstrap: [AppComponent]
 })
 
