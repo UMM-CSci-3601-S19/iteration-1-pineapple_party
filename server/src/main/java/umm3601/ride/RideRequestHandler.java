@@ -62,18 +62,18 @@ public class RideRequestHandler {
    * @param res the HTTP response
    * @return a boolean as whether the user was added successfully or not
 //   */
-//  public String addNewRide(Request req, Response res) {
-//    res.type("application/json");
-//
-//    Document newRide = Document.parse(req.body());
-//
-//    String name = newUser.getString("name");
-//    int age = newUser.getInteger("age");
-//    String company = newUser.getString("company");
-//    String email = newUser.getString("email");
-//
-//    System.err.println("Adding new user [name=" + name + ", age=" + age + " company=" + company + " email=" + email + ']');
-//    return userController.addNewUser(name, age, company, email);
-//  }
+  public String addNewRide(Request req, Response res) {
+    res.type("application/json");
+
+    Document newRide = Document.parse(req.body());
+
+    String driver = newRide.getString("driver");
+    String destination = newRide.getString("destination");
+    String origin = newRide.getString("origin");
+    String departure = newRide.getString("Departure");
+
+    System.err.println("Adding new ride [driver=" + driver + ", destination=" + destination + " origin=" + origin + " departure=" + departure + ']');
+    return rideController.addNewRide(driver, destination, origin, departure);
+  }
 }
 

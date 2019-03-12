@@ -8,6 +8,6 @@ export class Ride {
   destination: string;
   origin: string;
   // roundTrip: boolean;
-  // departure: string;
+  departure: string;
   // notes: string;
 }
