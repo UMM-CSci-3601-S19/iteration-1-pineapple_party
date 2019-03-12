@@ -44,7 +44,7 @@
       <mat-form-field flex>
         <input matInput #input id="departureField" placeholder="Departure" [(ngModel)]="data.ride.departure"
                formControlName="departure">
-        <mat-error *ngFor="let validation of add_departure_validation_messages.departure">
+        <mat-error *ngFor="let validation of add_ride_validation_messages.departure">
           <mat-error class="error-message" id='departure-error'
                      *ngIf="addRideForm.get('departure').hasError(validation.type) && (addRideForm.get('departure').dirty || addRideForm.get('departure').touched)">
             {{validation.message}}
@@ -53,13 +53,13 @@
         </mat-error>
       </mat-form-field>
 
-      <form>
-        <label> RoundTrip:</label>
-        <select #input  id="RoundTripField" name="RoundTrip" (input)="data.ride.RoundTrip = $event.target.value" >
-          <option value="false">One way</option>
-          <option value="true">Round Trip</option>
-        </select>
-      </form>
+      <!--<form>-->
+        <!--<label> RoundTrip:</label>-->
+        <!--<select #input  id="RoundTripField" name="RoundTrip" (input)="data.ride.RoundTrip = $event.target.value" >-->
+          <!--<option value="false">One way</option>-->
+          <!--<option value="true">Round Trip</option>-->
+        <!--</select>-->
+      <!--</form>-->
 
     </mat-dialog-content>
 
