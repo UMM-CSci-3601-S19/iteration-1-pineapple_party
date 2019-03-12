@@ -19,7 +19,6 @@ export class RideListComponent implements OnInit {
   // These are the target values used in searching.
   // We should rename them to make that clearer.
   public rideDriver: string;
-  public rideRiders: string;
   public rideDestination: string;
   public rideOrigin: string;
   public rideRoundTrip: boolean;
@@ -39,7 +38,7 @@ export class RideListComponent implements OnInit {
   }
 
   openDialog(): void {
-    const newRide: Ride = {_id: '', driver: '',destination: '', origin: '', departure: ''};
+    const newRide: Ride = {_id: '', driver: '',destination: '', origin: '',roundTrip: null, departure: '', notes: ''};
     const dialogRef = this.dialog.open(AddRideComponent, {
       width: '500px',
       data: {ride: newRide}
@@ -63,10 +62,6 @@ export class RideListComponent implements OnInit {
       }
     });
   }
-
-
-  public filterRides(): Ride[] {
-
   public filterRides(searchDeparture: string, searchDestination: string, searchRoundTrip: boolean, searchDriver: string): Ride[] {
     this.filteredRides = this.rides;
     if (searchDeparture != null) {
