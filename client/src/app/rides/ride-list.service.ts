@@ -14,8 +14,8 @@ export class RideListService {
   constructor(private http: HttpClient) {
   }
 
-  getRides(rideDate?: string): Observable<Ride[]> {
-    //this.filterByDate(rideDate);
+  getRides(rideDriver?: string): Observable<Ride[]> {
+    this.filterByDriver(rideDriver);
     return this.http.get<Ride[]>(this.rideUrl);
   }
 
@@ -23,23 +23,23 @@ export class RideListService {
     return this.http.get<Ride>(this.rideUrl + '/' + id);
   }
 
-  filterByDate(rideDate?: string): void {
-    if (!(rideDate == null || rideDate === '')) {
-      if (this.parameterPresent('company=')) {
+  filterByDriver(rideDriver?: string): void {
+    if (!(rideDriver == null || rideDriver === '')) {
+      if (this.parameterPresent('driver=')) {
         // there was a previous search by company that we need to clear
-        this.removeParameter('company=');
+        this.removeParameter('driver=');
       }
       if (this.rideUrl.indexOf('?') !== -1) {
         // there was already some information passed in this url
-        this.rideUrl += 'company=' + rideDate + '&';
+        this.rideUrl += 'driver=' + rideDriver + '&';
       } else {
         // this was the first bit of information to pass in the url
-        this.rideUrl += '?company=' + rideDate + '&';
+        this.rideUrl += '?company=' + rideDriver + '&';
       }
     } else {
       // there was nothing in the box to put onto the URL... reset
-      if (this.parameterPresent('company=')) {
-        let start = this.rideUrl.indexOf('company=');
+      if (this.parameterPresent('driver=')) {
+        let start = this.rideUrl.indexOf('driver=');
         const end = this.rideUrl.indexOf('&', start);
         if (this.rideUrl.substring(start - 1, start) === '?') {
           start = start - 1;
@@ -63,4 +63,19 @@ export class RideListService {
     this.rideUrl = this.rideUrl.substring(0, start) + this.rideUrl.substring(end);
   }
 
+  addNewRide(newRide: Ride): Observable<string> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        // We're sending JSON
+        'Content-Type': 'application/json'
+      }),
+      // But we're getting a simple (text) string in response
+      // The server sends the hex version of the new todo back
+      // so we know how to find/access that user again later.
+      responseType: 'text' as 'json'
+    };
+
+    // Send post request to add a new todo with the todo data as the body with specified headers.
+    return this.http.post<string>(this.rideUrl + '/new', newRide, httpOptions);
+  }
 }
