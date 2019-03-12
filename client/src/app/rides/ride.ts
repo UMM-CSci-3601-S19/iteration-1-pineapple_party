@@ -7,7 +7,7 @@ export class Ride {
   //riders: string[];
   destination: string;
   origin: string;
-  // roundTrip: boolean;
-  // departure: string;
-  // notes: string;
+  roundTrip: boolean;
+  departure: string;
+  notes: string;
 }
