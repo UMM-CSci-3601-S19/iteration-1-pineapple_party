@@ -1,0 +1,18 @@
+#ride-container{
+}
+
+#rideTitle{
+  font-size: 14px;
+}
+#destination {
+  font-size: larger;
+}
+
+.true{
+  float: right;
+  color: lawngreen;
+}
+.false{
+  float: right;
+  color: red;
+}

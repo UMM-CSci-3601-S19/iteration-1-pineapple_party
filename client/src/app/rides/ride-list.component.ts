@@ -21,6 +21,8 @@ export class RideListComponent implements OnInit {
   public rideDriver: string;
   public rideRiders: string;
   public rideDestination: string;
+  public rideOrigin: string;
+  public rideRoundTrip: boolean;
   public rideDeparture: string;
 
 
@@ -65,46 +67,25 @@ export class RideListComponent implements OnInit {
 
   public filterRides(): Ride[] {
 
+  public filterRides(searchDeparture: string, searchDestination: string, searchRoundTrip: boolean, searchDriver: string): Ride[] {
     this.filteredRides = this.rides;
+    if (searchDeparture != null) {
+      searchDeparture = searchDeparture.toLocaleLowerCase();
+      this.filteredRides = this.filteredRides.filter(ride => {
+        return !searchDeparture || ride.departure.toLowerCase().indexOf(searchDeparture) !== -1;
+      });
+    }
 
-    // // Filter by name
-    // if (searchName != null) {
-      // searchName = searchName.toLocaleLowerCase();
-
-      // this.filteredRides = this.filteredRides.filter(user => {
-    //     return !searchName || user.name.toLowerCase().indexOf(searchName) !== -1;
-    //   });
-    // }
-    //
-    // // Filter by age
-    // if (searchAge != null) {
-    //   this.filteredUsers = this.filteredUsers.filter(user => {
-    //     return !searchAge || user.age == searchAge;
-    //   });
-    // }
+    if (searchDestination != null) {
+      searchDestination = searchDestination.toLocaleLowerCase();
+      this.filteredRides = this.filteredRides.filter(ride => {
+        return !searchDestination || ride.destination.toLowerCase().indexOf(searchDestination) !== -1;
+      });
+    }
 
     return this.filteredRides;
-  }
 
-  // public filterRides(searchDeparture: string, searchDestination: string): Ride[] {
-  //   this.filteredRides = this.rides;
-  //   if (searchDeparture != null) {
-  //     searchDeparture = searchDeparture.toLocaleLowerCase();
-  //     this.filteredRides = this.filteredRides.filter(ride => {
-  //       return !searchDeparture || ride.departure.toLowerCase().indexOf(searchDeparture) !== -1;
-  //     });
-  //   }
-  //
-  //   if (searchDestination != null) {
-  //     searchDestination = searchDestination.toLocaleLowerCase();
-  //     this.filteredRides = this.filteredRides.filter(ride => {
-  //       return !searchDestination || ride.destination.toLowerCase().indexOf(searchDestination) !== -1;
-  //     });
-  //   }
-  //
-  //   return this.filteredRides;
-  //
-  // }
+  }
 
 
   refreshRides(): Observable<Ride[]> {
@@ -113,7 +94,7 @@ export class RideListComponent implements OnInit {
     rides.subscribe(
       rides => {
         this.rides = rides;
-        this.filterRides();
+        this.filterRides(this.rideDeparture, this.rideDestination, this.rideRoundTrip, this.rideDriver);
       },
       err => {
         console.log(err);
