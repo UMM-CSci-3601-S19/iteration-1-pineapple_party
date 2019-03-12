@@ -12,6 +12,7 @@ import {CustomModule} from './custom.module';
 import {RideComponent} from './rides/ride.component';
 import {RideListComponent} from './rides/ride-list.component';
 import {RideListService} from "./rides/ride-list.service";
+import {AddRideComponent} from "./rides/add-ride.component";
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import {RideListService} from "./rides/ride-list.service";
     HomeComponent,
    // UserComponent,
     RideComponent,
-    RideListComponent
+    RideListComponent,
+    AddRideComponent
   ],
   providers: [
     RideListService,
