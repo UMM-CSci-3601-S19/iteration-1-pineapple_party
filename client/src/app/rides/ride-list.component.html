@@ -29,11 +29,11 @@
         <!--</button>-->
 
         <mat-accordion *ngIf="rides; else rideError">
-          <mat-expansion-panel #elem class="ride" [id]="rides.driver" [expanded]="this.isHighlighted(ride)"
+          <mat-expansion-panel #elem class="ride" [id]="ride.driver" [expanded]="this.isHighlighted(ride)"
                                *ngFor="let ride of this.filterRides()">
             <mat-expansion-panel-header>
               <!--<mat-panel-title matTooltip="email: {{ride.email}}">{{ride.driver}}</mat-panel-title>-->
-
+              Driver: {{ride.driver}}
             </mat-expansion-panel-header>
             <mat-panel-description>Driver: {{ride.driver}}</mat-panel-description>
           </mat-expansion-panel>
