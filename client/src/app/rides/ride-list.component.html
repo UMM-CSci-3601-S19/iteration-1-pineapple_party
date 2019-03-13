@@ -1,4 +1,5 @@
-<div>
+
+<div id="addRide">
   <button id="addNewRide" mat-raised-button (click)="openDialog()">Add New ride</button>
 </div>
 
@@ -9,7 +10,7 @@
       <mat-divider></mat-divider>
       <mat-card-content>
         <mat-form-field>
-          <input matInput id="rideDriver" #input type="text" placeholder="Driver Driver"
+          <input matInput id="rideDriver" #input type="text" placeholder="Driver Name"
                  (input)="rideDriver = $event.target.value">
         </mat-form-field>
         <mat-form-field>
@@ -22,7 +23,7 @@
         </mat-form-field>
 
         <mat-form-field>
-          <input matInput id="rideDeparture" #input type="text" placeholder="Departure"
+          <input matInput id="rideDeparture" #input type="text" placeholder="Departure Time"
                  (input)="rideDeparture = $event.target.value">
         </mat-form-field>
         <button mat-raised-button id="submit" color="primary" #input type="button" (click)="loadService()">Submit
