@@ -34,7 +34,7 @@ export class RideListService {
         this.rideUrl += 'driver=' + rideDriver + '&';
       } else {
         // this was the first bit of information to pass in the url
-        this.rideUrl += '?company=' + rideDriver + '&';
+        this.rideUrl += '?driver=' + rideDriver + '&';
       }
     } else {
       // there was nothing in the box to put onto the URL... reset
