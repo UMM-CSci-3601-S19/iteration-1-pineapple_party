@@ -22,30 +22,30 @@ describe('Display rides', () => {
       getRides: () => Observable.of([
         {_id: "1",
           driver: "Bob",
-          riders: "Jill",
+          // riders: "Jill",
           destination: "Willies",
           origin: "Campus",
-          roundTrip: true,
+          // roundTrip: true,
           departure: "10/08/2019 3:45",
-          notes: "getting chips"
+          // notes: "getting chips"
         },
         {_id: "12",
           driver: "Bobby",
-          riders: "Jack",
+          // riders: "Jack",
           destination: "Bremer",
           origin: "Campus",
-          roundTrip: true,
+          // roundTrip: true,
           departure: "10/08/2019 8:45",
-          notes: "getting coins"
+          // notes: "getting coins"
         },
          {_id: "3",
           driver: "Fran",
-          riders: "Maria",
+          // riders: "Maria",
           destination: "St Cloud",
           origin: "4th street",
-          roundTrip: false,
+          // roundTrip: false,
           departure: "12/18/2019 20:45",
-          notes: "going home for winter break"
+          // notes: "going home for winter break"
         }
       ])
     };
@@ -103,8 +103,8 @@ describe('Display rides', () => {
     expect(rideList.rides.some((ride:Ride) => ride.destination === "Moon")).toBe(false);
   });
 
-  it('NOT contain one with no round trip', () => {
-    expect(rideList.rides.some((ride:Ride) => ride.roundTrip === false)).toBe(true);
-  });
+  // it('NOT contain one with no round trip', () => {
+  //   expect(rideList.rides.some((ride:Ride) => ride.roundTrip === false)).toBe(true);
+  // });
 
 });
