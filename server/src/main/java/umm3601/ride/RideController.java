@@ -126,14 +126,14 @@ public class RideController {
 
     Document newRide = new Document();
     newRide.append("driver", driver);
-    newRide.append("destintion", destination);
+    newRide.append("destination", destination);
     newRide.append("origin", origin);
     newRide.append("departure", departure);
 
     try {
       rideCollection.insertOne(newRide);
       ObjectId id = newRide.getObjectId("_id");
-      System.err.println("Successfully added new ride [_id=" + id + ", driver=" + driver + ", destintion=" + destination + " origin=" + origin + " departure=" + departure + ']');
+      System.err.println("Successfully added new ride [_id=" + id + ", driver=" + driver + ", destination=" + destination + " origin=" + origin + " departure=" + departure + ']');
       return id.toHexString();
     } catch (MongoException me) {
       me.printStackTrace();
