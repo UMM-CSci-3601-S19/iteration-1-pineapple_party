@@ -72,7 +72,7 @@ export class RideListComponent implements OnInit {
       });
     }
     if (searchDestination != null) {
-      // searchDestination = searchDestination.toLocaleLowerCase();
+      searchDestination = searchDestination.toLocaleLowerCase();
       this.filteredRides = this.filteredRides.filter(ride => {
         return !searchDestination || ride.destination.toLowerCase().indexOf(searchDestination) !== -1;
       });

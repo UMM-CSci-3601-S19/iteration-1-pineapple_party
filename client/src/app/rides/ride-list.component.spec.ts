@@ -25,7 +25,6 @@ describe('Display rides', () => {
           riders: "Jill",
           destination: "Willies",
           origin: "Campus",
-          roundTrip: true,
           departure: "10/08/2019 3:45",
           notes: "getting chips"
         },
@@ -34,7 +33,6 @@ describe('Display rides', () => {
           riders: "Jack",
           destination: "Bremer",
           origin: "Campus",
-          roundTrip: true,
           departure: "10/08/2019 8:45",
           notes: "getting coins"
         },
@@ -43,7 +41,6 @@ describe('Display rides', () => {
           riders: "Maria",
           destination: "St Cloud",
           origin: "4th street",
-          roundTrip: false,
           departure: "12/18/2019 20:45",
           notes: "going home for winter break"
         }
@@ -103,8 +100,12 @@ describe('Display rides', () => {
     expect(rideList.rides.some((ride:Ride) => ride.destination === "Moon")).toBe(false);
   });
 
-  it('NOT contain one with no round trip', () => {
-    expect(rideList.rides.some((ride:Ride) => ride.roundTrip === false)).toBe(true);
+  it('ride list filters by driver', ()=> {
+    expect(rideList.filteredRides.length).toBe(3);
+    rideList.rideDriver = 'Bobby';
+    const a: Observable<Ride[]> = rideList.refreshRides();
+    a.do(x => Observable.of(x)).subscribe(x => expect(rideList.filteredRides.length).toBe(1));
   });
+
 
 });
