@@ -25,7 +25,7 @@ describe('Display rides', () => {
           riders: "Jill",
           destination: "Willies",
           origin: "Campus",
-          departure: "10/08/2019 3:45",
+          departure: "3:45PM",
           notes: "getting chips"
         },
         {_id: "12",
@@ -33,7 +33,7 @@ describe('Display rides', () => {
           riders: "Jack",
           destination: "Bremer",
           origin: "Campus",
-          departure: "10/08/2019 8:45",
+          departure: "8:45PM",
           notes: "getting coins"
         },
          {_id: "3",
@@ -41,7 +41,7 @@ describe('Display rides', () => {
           riders: "Maria",
           destination: "St Cloud",
           origin: "4th street",
-          departure: "12/18/2019 20:45",
+          departure: "20:45PM",
           notes: "going home for winter break"
         }
       ])
@@ -107,5 +107,24 @@ describe('Display rides', () => {
     a.do(x => Observable.of(x)).subscribe(x => expect(rideList.filteredRides.length).toBe(1));
   });
 
+  it('ride list filters by destination', () => {
+    expect(rideList.filteredRides.length).toBe(3);
+    rideList.rideDestination = 'Bremer';
+    const a: Observable<Ride[]> = rideList.refreshRides();
+    a.do(x => Observable.of(x)).subscribe(x => expect(rideList.filteredRides.length).toBe(1));
+  });
 
+  it('ride list filters by origin', () => {
+    expect(rideList.filteredRides.length).toBe(3);
+    rideList.rideOrigin = 'Campus';
+    const a: Observable<Ride[]> = rideList.refreshRides();
+    a.do(x => Observable.of(x)).subscribe(x => expect(rideList.filteredRides.length).toBe(2));
+  });
+
+  it('ride list filters by departure', () => {
+    expect(rideList.filteredRides.length).toBe(3);
+    rideList.rideDeparture = '8:45PM';
+    const a: Observable<Ride[]> = rideList.refreshRides();
+    a.do(x => Observable.of(x)).subscribe(x => expect(rideList.filteredRides.length).toBe(1));
+  });
 });
