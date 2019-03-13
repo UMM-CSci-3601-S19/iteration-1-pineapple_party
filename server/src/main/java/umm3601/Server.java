@@ -67,7 +67,7 @@ public class Server {
 
     get("api/rides", rideRequestHandler::getRides);
     get("api/rides/:id", rideRequestHandler::getRideJSON);
-    post("api/todos/new",rideRequestHandler::addNewRide);
+    post("api/rides/new",rideRequestHandler::addNewRide);
 
 
     // An example of throwing an unhandled exception so you can see how the
