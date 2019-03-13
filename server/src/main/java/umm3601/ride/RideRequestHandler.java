@@ -70,7 +70,7 @@ public class RideRequestHandler {
     String driver = newRide.getString("driver");
     String destination = newRide.getString("destination");
     String origin = newRide.getString("origin");
-    String departure = newRide.getString("Departure");
+    String departure = newRide.getString("departure");
 
     System.err.println("Adding new ride [driver=" + driver + ", destination=" + destination + " origin=" + origin + " departure=" + departure + ']');
     return rideController.addNewRide(driver, destination, origin, departure);
