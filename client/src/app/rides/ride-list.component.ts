@@ -3,6 +3,7 @@ import {RideListService} from './ride-list.service';
 import {Ride} from './ride';
 import {Observable} from 'rxjs/Observable';
 import {MatDialog} from '@angular/material';
+import {AddRideComponent} from './add-ride.component';
 
 @Component({
   selector: 'ride-list-component',
@@ -18,10 +19,8 @@ export class RideListComponent implements OnInit {
   // These are the target values used in searching.
   // We should rename them to make that clearer.
   public rideDriver: string;
-  public rideRiders: string;
   public rideDestination: string;
   public rideOrigin: string;
-  public rideRoundTrip: boolean;
   public rideDeparture: string;
 
 
@@ -33,25 +32,38 @@ export class RideListComponent implements OnInit {
 
   }
 
-  isHighlighted(ride: Ride): boolean {
-    return ride.destination['$oid'] === this.highlightedID;
+  // isHighlighted(ride: Ride): boolean {
+  //   return ride.destination['$oid'] === this.highlightedID;
+  // }
+
+  openDialog(): void {
+    const newRide: Ride = {_id: '', driver: '',destination: '', origin: '', departure: ''};
+    const dialogRef = this.dialog.open(AddRideComponent, {
+      width: '500px',
+      data: {ride: newRide}
+    });
+
+
+    dialogRef.afterClosed().subscribe(newRide => {
+      if (newRide != null) {
+
+        this.rideListService.addNewRide(newRide).subscribe(
+          result => {
+            this.highlightedID = result;
+            this.refreshRides();
+          },
+          err => {
+            // This should probably be turned into some sort of meaningful response.
+            console.log('There was an error adding the ride.');
+            console.log('The newRide or dialogResult was ' + JSON.stringify(newRide));
+            console.log('The error was ' + JSON.stringify(err));
+          });
+      }
+    });
   }
 
-  public filterRides(searchDeparture: string, searchDestination: string, searchRoundTrip: boolean, searchDriver: string, searchOrigin: string): Ride[] {
+  public filterRides(searchDriver: string, searchDestination: string, searchOrigin: string, searchDeparture: string ): Ride[] {
     this.filteredRides = this.rides;
-    if (searchDeparture != null) {
-      searchDeparture = searchDeparture.toLocaleLowerCase();
-      this.filteredRides = this.filteredRides.filter(ride => {
-        return !searchDeparture || ride.departure.toLowerCase().indexOf(searchDeparture) !== -1;
-      });
-    }
-
-    if (searchDestination != null) {
-      searchDestination = searchDestination.toLocaleLowerCase();
-      this.filteredRides = this.filteredRides.filter(ride => {
-        return !searchDestination || ride.destination.toLowerCase().indexOf(searchDestination) !== -1;
-      });
-    }
 
     if (searchDriver != null) {
       searchDriver = searchDriver.toLocaleLowerCase();
@@ -59,7 +71,12 @@ export class RideListComponent implements OnInit {
         return !searchDriver || ride.driver.toLowerCase().indexOf(searchDriver) !== -1;
       });
     }
-
+    if (searchDestination != null) {
+      // searchDestination = searchDestination.toLocaleLowerCase();
+      this.filteredRides = this.filteredRides.filter(ride => {
+        return !searchDestination || ride.destination.toLowerCase().indexOf(searchDestination) !== -1;
+      });
+    }
     if (searchOrigin != null) {
       searchOrigin = searchOrigin.toLocaleLowerCase();
       this.filteredRides = this.filteredRides.filter(ride => {
@@ -67,18 +84,13 @@ export class RideListComponent implements OnInit {
       });
     }
 
-    if (searchRoundTrip != null) {
-      //searchRoundTrip = searchRoundTrip.toLocaleLowerCase();
+    if (searchDeparture != null) {
+      searchDeparture = searchDeparture.toLocaleLowerCase();
       this.filteredRides = this.filteredRides.filter(ride => {
-        if (searchRoundTrip == true) {
-          return !searchRoundTrip || ride.roundTrip == true;
-        }
-        if (searchRoundTrip == false) {
-          return !searchRoundTrip || ride.roundTrip == false;
-        }
-
+        return !searchDeparture || ride.departure.toLowerCase().indexOf(searchDeparture) !== -1;
       });
     }
+
 
     return this.filteredRides;
 
@@ -91,7 +103,7 @@ export class RideListComponent implements OnInit {
     rides.subscribe(
       rides => {
         this.rides = rides;
-        this.filterRides(this.rideDeparture, this.rideDestination, this.rideRoundTrip, this.rideDriver, this.rideOrigin,);
+        this.filterRides( this.rideDriver, this.rideDestination, this.rideOrigin,  this.rideDeparture );
       },
       err => {
         console.log(err);

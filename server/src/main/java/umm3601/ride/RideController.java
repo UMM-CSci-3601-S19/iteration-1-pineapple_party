@@ -40,16 +40,12 @@ public class RideController {
    * and `null` if no user with that ID is found
    */
   public String getRide(String id) {
-    FindIterable<Document> jsonRides
-      = rideCollection
-      .find(eq("_id", new ObjectId(id)));
-
+    FindIterable<Document> jsonRides = rideCollection.find(eq("_id", new ObjectId(id)));
     Iterator<Document> iterator = jsonRides.iterator();
     if (iterator.hasNext()) {
       Document ride = iterator.next();
       return ride.toJson();
     } else {
-      // We didn't find the desired user
       return null;
     }
   }
@@ -67,25 +63,52 @@ public class RideController {
   public String getRides(Map<String, String[]> queryParams) {
 
     Document filterDoc = new Document();
-//
-//    if (queryParams.containsKey("age")) {
-//      int targetAge = Integer.parseInt(queryParams.get("age")[0]);
-//      filterDoc = filterDoc.append("age", targetAge);
+
+    if (queryParams.containsKey("driver")) {
+      String rideDriver = (queryParams.get("driver")[0]);
+      Document contentRegQuery = new Document();
+      contentRegQuery.append("$regex", rideDriver);
+      contentRegQuery.append("$options", "i");
+      filterDoc = filterDoc.append("driver", contentRegQuery);
+    }
+
+
+//    if (queryParams.containsKey("status")) {
+//      boolean rideStatus = Boolean.parseBoolean(queryParams.get("status")[0]);
+//      filterDoc = filterDoc.append("status", rideStatus);
 //    }
-//
-//    if (queryParams.containsKey("company")) {
-//      String targetContent = (queryParams.get("company")[0]);
-//      Document contentRegQuery = new Document();
-//      contentRegQuery.append("$regex", targetContent);
-//      contentRegQuery.append("$options", "i");
-//      filterDoc = filterDoc.append("company", contentRegQuery);
-//    }
+
+    if (queryParams.containsKey("destination")) {
+      String rideDestination = (queryParams.get("destination")[0]);
+      Document contentRegQuery = new Document();
+      contentRegQuery.append("$regex", rideDestination);
+      contentRegQuery.append("$options", "i");
+      filterDoc = filterDoc.append("destination", contentRegQuery);
+    }
+
+    if (queryParams.containsKey("origin")) {
+      String rideOrigin = (queryParams.get("origin")[0]);
+      Document contentRegQuery = new Document();
+      contentRegQuery.append("$regex", rideOrigin);
+      contentRegQuery.append("$options", "i");
+      filterDoc = filterDoc.append("origin", contentRegQuery);
+    }
+
+    if (queryParams.containsKey("departure")) {
+      String rideDeparture = (queryParams.get("departure")[0]);
+      Document contentRegQuery = new Document();
+      contentRegQuery.append("$regex", rideDeparture);
+      contentRegQuery.append("$options", "i");
+      filterDoc = filterDoc.append("departure", contentRegQuery);
+    }
+
 
     //FindIterable comes from mongo, Document comes from Gson
-    FindIterable<Document> matchingRiders = rideCollection.find(filterDoc);
+    FindIterable<Document> matchingRides = rideCollection.find(filterDoc);
 
-    return serializeIterable(matchingRiders);
+    return serializeIterable(matchingRides);
   }
+
 
   /*
    * Take an iterable collection of documents, turn each into JSON string
@@ -99,31 +122,22 @@ public class RideController {
   }
 
 
-  /**
-   * Helper method which appends received user information to the to-be added document
-   *
-   * @param name the name of the new user
-   * @param age the age of the new user
-   * @param company the company the new user works for
-   * @param email the email of the new user
-   * @return boolean after successfully or unsuccessfully adding a user
-   */
-//  public String addNewUser(String name, int age, String company, String email) {
-//
-//    Document newUser = new Document();
-//    newUser.append("name", name);
-//    newUser.append("age", age);
-//    newUser.append("company", company);
-//    newUser.append("email", email);
-//
-//    try {
-//      userCollection.insertOne(newUser);
-//      ObjectId id = newUser.getObjectId("_id");
-//      System.err.println("Successfully added new user [_id=" + id + ", name=" + name + ", age=" + age + " company=" + company + " email=" + email + ']');
-//      return id.toHexString();
-//    } catch (MongoException me) {
-//      me.printStackTrace();
-//      return null;
-//    }
-//  }
+  public String addNewRide(String driver, String destination, String origin, String departure) {
+
+    Document newRide = new Document();
+    newRide.append("driver", driver);
+    newRide.append("destination", destination);
+    newRide.append("origin", origin);
+    newRide.append("departure", departure);
+
+    try {
+      rideCollection.insertOne(newRide);
+      ObjectId id = newRide.getObjectId("_id");
+      System.err.println("Successfully added new ride [_id=" + id + ", driver=" + driver + ", destination=" + destination + " origin=" + origin + " departure=" + departure + ']');
+      return id.toHexString();
+    } catch (MongoException me) {
+      me.printStackTrace();
+      return null;
+    }
+  }
 }
