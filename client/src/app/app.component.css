@@ -1,13 +1,5 @@
-mat-nav-list{
-  background-color: green;
+
+#logo {
+  margin: 0px;
 }
 
-mat-toolbar {
-  background: forestgreen;
-  color: white;
-}
-
-#navbar {
-  background: green;
-  color: white;
-}

@@ -3,6 +3,7 @@
 .nav-active {
   background-color: mat-color($mat-grey, 100) !important;
   color: mat-color($accent) !important;
+  padding: 0px;
 }
 
 .nav-active mat-icon {
