@@ -33,9 +33,6 @@ export class RidePage {
     input.sendKeys(driver);
   }
 
-  selectUpKey() {
-    browser.actions().sendKeys(Key.ARROW_UP).perform();
-  }
 
   backspace() {
     browser.actions().sendKeys(Key.BACK_SPACE).perform();
@@ -45,19 +42,18 @@ export class RidePage {
     const input = element(by.id('rideOrigin'));
     input.click();
     input.sendKeys(origin);
-    this.click('submit');
+
   }
 
   getRideByDestination(destination: string) {
-    const input = element(by.id('rideDestinaion'));
+    const input = element(by.id('rideDestination'));
     input.click();
     input.sendKeys(destination);
-    this.click('submit')
   }
 
-  getUniqueRide(destination: string) {
-    const ride = element(by.id(destination)).getText();
-    this.highlightElement(by.id(destination));
+  getUniqueRide(driver: string) {
+    const ride = element(by.id(driver)).element(by.id('rideTitle')).getText();
+    this.highlightElement(by.id(driver));
 
     return ride;
   }
