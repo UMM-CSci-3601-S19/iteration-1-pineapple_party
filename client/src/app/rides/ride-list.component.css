@@ -13,13 +13,19 @@
   height: 50px;
   font-size: 45px;
 }
+.ride {
+  background-color:  #F4FFF8;
+  border-radius: 10px;
+}
 
 #display {
   width: 100%;
-  margin-top: 20px;
+  margin: 20px;
+  border-radius: 20px;
+  background-color: #F4FFF8;
+;
 }
 #anodis{
-  margin: 10px;
   width: 100%;
 }
 #searchRides{
@@ -30,9 +36,10 @@
   padding-left: 15px;
   width: 200px;
   height: 270px;
-  margin-top: 30px;
+  margin-top: 20px;
   border-radius: 20px;
   position: relative;
+  background-color:#F4FFF8;
 }
 #addNewRide{
   float: right;
@@ -40,6 +47,8 @@
   border-radius: 15px;
   width: 215px;
   height: 50px;
+  color: white;
+  background-color: #F48D26;
 }
 #addNewRideDiv{
   float: right;
@@ -49,10 +58,14 @@
   width: 215px;
   height: 50px;
 }
+#accordion {
+  width: 100%;
+}
 
 #content {
-  background-color: gray;
+  background-color: #B3D8DA;
   height: 3600px;
+  position: absolute;
 }
 
 #mainP {
@@ -71,6 +84,9 @@
 #searchRidesCardP{
   margin: 0px;
   padding-left: 15px;
+  background-color:#F4FFF8;
+  padding-bottom: 5px;
+
 }
 .FieldsP{
   width: 70px;
@@ -78,12 +94,13 @@
 }
 #displayP{
   width: 98%;
+  background-color:#F4FFF8;
 }
 #searchFieldsP{
 }
 #addNewRideP {
   display: none;
-  background-color: #2f74ce;
+  background-color: #E98653;
   margin: 5px;
   font-size: 50px;
   border-radius: 150px;
