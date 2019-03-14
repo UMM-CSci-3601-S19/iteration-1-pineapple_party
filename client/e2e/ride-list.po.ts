@@ -55,9 +55,9 @@ export class RidePage {
     this.click('submit')
   }
 
-  getUniqueRide(driver: string) {
-    const ride = element(by.id(driver)).getText();
-    this.highlightElement(by.id(driver));
+  getUniqueRide(destination: string) {
+    const ride = element(by.id(destination)).getText();
+    this.highlightElement(by.id(destination));
 
     return ride;
   }

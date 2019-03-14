@@ -87,7 +87,6 @@ describe('Ride list', () => {
       expect(ride.length).toBe(7);
     });
     page.field('rideOrigin').sendKeys('h');
-    page.click('submit');
     page.getRides().then((ride) => {
       expect(ride.length).toBe(4);
     });
