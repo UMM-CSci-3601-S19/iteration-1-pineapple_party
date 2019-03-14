@@ -22,30 +22,30 @@ describe('Display rides', () => {
       getRides: () => Observable.of([
         {_id: "1",
           driver: "Bob",
-          riders: "Jill",
+          // riders: "Jill",
           destination: "Willies",
           origin: "Campus",
-          roundTrip: true,
-          departure: "10/08/2019 3:45",
-          notes: "getting chips"
+          // roundTrip: true,
+          departure: "3:45PM",
+          // notes: "getting chips"
         },
         {_id: "12",
           driver: "Bobby",
-          riders: "Jack",
+          // riders: "Jack",
           destination: "Bremer",
           origin: "Campus",
-          roundTrip: true,
-          departure: "10/08/2019 8:45",
-          notes: "getting coins"
+          // roundTrip: true,
+          departure: "8:45PM",
+          // notes: "getting coins"
         },
          {_id: "3",
           driver: "Fran",
-          riders: "Maria",
+          // riders: "Maria",
           destination: "St Cloud",
           origin: "4th street",
-          roundTrip: false,
-          departure: "12/18/2019 20:45",
-          notes: "going home for winter break"
+          // roundTrip: false,
+          departure: "20:45",
+          // notes: "going home for winter break"
         }
       ])
     };
@@ -103,8 +103,34 @@ describe('Display rides', () => {
     expect(rideList.rides.some((ride:Ride) => ride.destination === "Moon")).toBe(false);
   });
 
-  it('NOT contain one with no round trip', () => {
-    expect(rideList.rides.some((ride:Ride) => ride.roundTrip === false)).toBe(true);
+  // it('NOT contain one with no round trip', () => {
+  //   expect(rideList.rides.some((ride:Ride) => ride.roundTrip === false)).toBe(true);
+  // });
+  it('ride list filters by driver', ()=> {
+    expect(rideList.filteredRides.length).toBe(3);
+    rideList.rideDriver = 'Bobby';
+    const a: Observable<Ride[]> = rideList.refreshRides();
+    a.do(x => Observable.of(x)).subscribe(x => expect(rideList.filteredRides.length).toBe(1));
   });
 
+  it('ride list filters by destination', () => {
+    expect(rideList.filteredRides.length).toBe(3);
+    rideList.rideDestination = 'Bremer';
+    const a: Observable<Ride[]> = rideList.refreshRides();
+    a.do(x => Observable.of(x)).subscribe(x => expect(rideList.filteredRides.length).toBe(1));
+  });
+
+  it('ride list filters by origin', () => {
+    expect(rideList.filteredRides.length).toBe(3);
+    rideList.rideOrigin = 'Campus';
+    const a: Observable<Ride[]> = rideList.refreshRides();
+    a.do(x => Observable.of(x)).subscribe(x => expect(rideList.filteredRides.length).toBe(2));
+  });
+
+  it('ride list filters by departure', () => {
+    expect(rideList.filteredRides.length).toBe(3);
+    rideList.rideDeparture = '8:45PM';
+    const a: Observable<Ride[]> = rideList.refreshRides();
+    a.do(x => Observable.of(x)).subscribe(x => expect(rideList.filteredRides.length).toBe(1));
+  });
 });

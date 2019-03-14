@@ -42,7 +42,7 @@ export class AddRideComponent implements OnInit {
     ],
 
     'departure': [
-      {type: 'required', message: 'Departure is required'}
+      {type: 'required', message: 'Departure-time is required'}
     ]
   };
 

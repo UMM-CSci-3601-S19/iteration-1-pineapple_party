@@ -1,4 +1,3 @@
-// import {User} from "../users/user";
 //import DateTimeFormat = Intl.DateTimeFormat;
 
 export class Ride {
