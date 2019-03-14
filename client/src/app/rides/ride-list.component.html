@@ -51,16 +51,16 @@
              <mat-card-content>
                Departure: {{ride.departure}}
              </mat-card-content>
-              <!--<mat-accordion *ngIf="rides" [id]="ride.notes">-->
-                <!--<mat-expansion-panel>-->
-                  <!--<mat-expansion-panel-header>-->
-                    <!--<mat-panel-title>-->
-                      <!--Description-->
-                    <!--</mat-panel-title>-->
-                  <!--</mat-expansion-panel-header>-->
-                  <!--<mat-panel-description>Notes: {{ride.notes}}</mat-panel-description>-->
-                <!--</mat-expansion-panel>-->
-              <!--</mat-accordion>-->
+              <mat-accordion *ngIf="rides" id="accordion">
+                <mat-expansion-panel>
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                      Description
+                    </mat-panel-title>
+                  </mat-expansion-panel-header>
+                  <mat-panel-description> {{ride.notes}}</mat-panel-description>
+                </mat-expansion-panel>
+              </mat-accordion>
             </mat-card-content>
           </mat-card>
         </div>
@@ -132,16 +132,16 @@
                 <mat-card-content>
                   Departure: {{ride.departure}}
                 </mat-card-content>
-                <!--<mat-accordion *ngIf="rides" [id]="ride.notes">-->
-                  <!--<mat-expansion-panel>-->
-                    <!--<mat-expansion-panel-header>-->
-                      <!--<mat-panel-title>-->
-                        <!--Description-->
-                      <!--</mat-panel-title>-->
-                    <!--</mat-expansion-panel-header>-->
-                    <!--<mat-panel-description>Notes: {{ride.notes}}</mat-panel-description>-->
-                  <!--</mat-expansion-panel>-->
-                <!--</mat-accordion>-->
+                <mat-accordion *ngIf="rides" [id]="ride.notes">
+                  <mat-expansion-panel>
+                    <mat-expansion-panel-header>
+                      <mat-panel-title>
+                        Description
+                      </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <mat-panel-description>Notes: {{ride.notes}}</mat-panel-description>
+                  </mat-expansion-panel>
+                </mat-accordion>
               </mat-card-content>
             </mat-card>
           </div>
