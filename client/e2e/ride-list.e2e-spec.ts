@@ -38,20 +38,20 @@ describe('Ride list', () => {
   it('should type something in filter driver box and check that it returned correct element', () => {
     page.navigateTo();
     page.typeADriver('t');
-    expect(page.getUniqueRide('Burt Dixon')).toEqual('Burt Dixon');
-    expect(page.getUniqueRide('Randolph Barrett')).toEqual('Randolph Barrett');
+    expect(page.getUniqueRide('Burt Dixon')).toContain('Burt Dixon');
+    expect(page.getUniqueRide('Randolph Barrett')).toContain('Randolph Barrett');
     page.backspace();
     page.typeADriver('ver');
-    expect(page.getUniqueRide('Vera Wynn')).toEqual('Vera Wynn');
+    expect(page.getUniqueRide('Vera Wynn')).toContain('Vera Wynn');
   });
 
   it('should type something in filter destination box and check that it returned correct element ', () => {
     page.navigateTo();
     page.getRideByDestination('ri');
 
-    expect(page.getUniqueRide('Emerson Klein')).toEqual('Emerson Klein');
+    expect(page.getUniqueRide('Emerson Klein')).toContain('Emerson Klein');
 
-    expect(page.getUniqueRide('Ava Sanders')).toEqual('Ava Sanders');
+    expect(page.getUniqueRide('Ava Sanders')).toContain('Ava Sanders');
   });
 
 
@@ -61,10 +61,10 @@ describe('Ride list', () => {
     page.getRides().then((ride) => {
       expect(ride.length).toBe(4);
     });
-    expect(page.getUniqueRide('Nieves Bray')).toEqual('Nieves Bray');
-    expect(page.getUniqueRide('Hazel Beck')).toEqual('Hazel Beck');
-    expect(page.getUniqueRide('Vera Wynn')).toEqual('Vera Wynn');
-    expect(page.getUniqueRide('Emerson Klein')).toEqual('Emerson Klein');
+    expect(page.getUniqueRide('Nieves Bray')).toContain('Nieves Bray');
+    expect(page.getUniqueRide('Hazel Beck')).toContain('Hazel Beck');
+    expect(page.getUniqueRide('Vera Wynn')).toContain('Vera Wynn');
+    expect(page.getUniqueRide('Emerson Klein')).toContain('Emerson Klein');
   });
 
   it('Should allow us to clear a search for origin and then still successfully search again',
@@ -72,12 +72,13 @@ describe('Ride list', () => {
     page.navigateTo();
     page.getOrigin('m');
     page.getRides().then((ride) => {
-      expect(ride.length).toBe(4);
+      expect(ride.length).toEqual(4);
     });
+    page.backspace();
 
     page.getOrigin('ne');
     page.getRides().then((ride) => {
-      expect(ride.length).toBe(0);
+      expect(ride.length).toEqual(0);
     });
   });
 
@@ -138,7 +139,7 @@ describe('Ride list', () => {
       const tracy_element = element(by.id('Awesome Startup, LLC'));
       browser.wait(protractor.ExpectedConditions.presenceOf(tracy_element), 10000);
 
-      expect(page.getUniqueRide('Tracy Kim')).toMatch('Tracy Kim.*'); // toEqual('Tracy Kim');
+      expect(page.getUniqueRide('Tracy Kim')).toContain('Tracy Kim'); // toEqual('Tracy Kim');
     });
 
     describe('Add Ride (Validation)', () => {
