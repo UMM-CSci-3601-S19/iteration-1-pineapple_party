@@ -1,35 +1,35 @@
 <div id="content">
 
-<div id="searchRides">
-  <mat-card id="searchRidesCard">
-    <mat-form-field>
-      <input matInput id="rideDriver" #input type="text" placeholder="Driver Name"
-             (input)="rideDriver = $event.target.value">
-    </mat-form-field>
-    <mat-form-field>
-      <input matInput id="rideDestination" #input type="text" placeholder="Destination"
-             (input)="rideDestination = $event.target.value">
-    </mat-form-field>
-    <mat-form-field>
-      <input matInput id="rideOrigin" #input type="text" placeholder="Starting Point"
-             (input)="rideOrigin = $event.target.value">
-    </mat-form-field>
+  <div id="searchRides">
+    <mat-card id="searchRidesCard">
+      <div id="searchFields">
+        <mat-form-field class="Fields">
+          <input matInput id="rideDriver" #input type="text" placeholder="Driver Name"
+                 (input)="rideDriver = $event.target.value">
+        </mat-form-field>
+        <mat-form-field class="Fields">
+          <input matInput id="rideDestination" #input type="text" placeholder="Destination"
+                 (input)="rideDestination = $event.target.value">
+        </mat-form-field>
+        <mat-form-field class="Fields">
+          <input matInput id="rideOrigin" #input type="text" placeholder="Starting Point"
+                 (input)="rideOrigin = $event.target.value">
+        </mat-form-field>
 
-    <mat-form-field>
-      <input matInput id="rideDeparture" #input type="text" placeholder="Departure Time"
-             (input)="rideDeparture = $event.target.value">
-    </mat-form-field>
-    <div>
-    <button mat-raised-button id="submit" color="primary" #input type="button" (click)="loadService()">Submit
-    </button>
+        <mat-form-field class="Fields">
+          <input matInput id="rideDeparture" #input type="text" placeholder="Departure Time"
+                 (input)="rideDeparture = $event.target.value">
+        </mat-form-field>
+      </div>
+      <div>
+      </div>
+    </mat-card>
+    <div id="addNewRideDiv">
+      <button id="addNewRide" mat-raised-button (click)="openDialog()">Add a New Ride</button>
     </div>
-  </mat-card>
-
-  <div id="addRide">
-    <button id="addNewRide" mat-raised-button (click)="openDialog()">Add New Ride</button>
   </div>
 
-</div>
+
 <div id="main" layout-gt-sm="row">
   <div id="anodis" flex-gt-sm="80" flex-offset-gt-sm="10">
     <mat-card id="display">
@@ -74,42 +74,43 @@
           </mat-error>
         </ng-template>
       </mat-card-content>
+
     </mat-card>
+
 
 
   </div>
 </div>
-
   <div id="searchRidesP">
     <mat-card id="searchRidesCardP">
-      <mat-form-field>
-        <input matInput id="rideDriverP" #input type="text" placeholder="Driver Name"
-               (input)="rideDriver = $event.target.value">
-      </mat-form-field>
-      <mat-form-field>
-        <input matInput id="rideDestinationP" #input type="text" placeholder="Destination"
-               (input)="rideDestination = $event.target.value">
-      </mat-form-field>
-      <mat-form-field>
-        <input matInput id="rideOriginP" #input type="text" placeholder="Starting Point"
-               (input)="rideOrigin = $event.target.value">
-      </mat-form-field>
+      <button id="addNewRideP" mat-raised-button (click)="openDialog()">+</button>
+      <div id="searchFieldsP">
 
-      <mat-form-field>
-        <input matInput id="rideDepartureP" #input type="text" placeholder="Departure Time"
-               (input)="rideDeparture = $event.target.value">
-      </mat-form-field>
+        <mat-form-field class="FieldsP">
+          <input matInput id="rideDriverP" #input type="text" placeholder="Driver Name"
+                 (input)="rideDriver = $event.target.value">
+        </mat-form-field>
+        <mat-form-field class="FieldsP">
+          <input matInput id="rideDestinationP" #input type="text" placeholder="Destination"
+                 (input)="rideDestination = $event.target.value">
+        </mat-form-field>
+        <mat-form-field class="FieldsP">
+          <input matInput id="rideOriginP" #input type="text" placeholder="Starting Point"
+                 (input)="rideOrigin = $event.target.value">
+        </mat-form-field>
+
+        <mat-form-field class="FieldsP">
+          <input matInput id="rideDepartureP" #input type="text" placeholder="Departure Time"
+                 (input)="rideDeparture = $event.target.value">
+        </mat-form-field>
+      </div>
       <div>
-        <button mat-raised-button id="submitP" color="primary" #input type="button" (click)="loadService()">Submit
-        </button>
       </div>
     </mat-card>
 
-    <div id="addRideP">
-      <button id="addNewRideP" mat-raised-button (click)="openDialog()">Add New Ride</button>
-    </div>
 
   </div>
+
   <div id="mainP" layout-gt-sm="row">
     <div id="anodisP" flex-gt-sm="80" flex-offset-gt-sm="10">
       <mat-card id="displayP">
