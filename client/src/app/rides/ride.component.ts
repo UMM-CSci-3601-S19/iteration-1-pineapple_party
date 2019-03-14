@@ -17,7 +17,7 @@ export class RideComponent implements OnInit {
 
   private subscribeToServiceForId(){
     if (this.id){
-      this.rideListService.getRiderById(this.id).subscribe(
+      this.rideListService.getRideById(this.id).subscribe(
         ride => this.ride = ride,
         err => {
           console.log(err);

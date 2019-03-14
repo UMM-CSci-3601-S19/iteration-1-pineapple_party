@@ -1,0 +1,163 @@
+<div id="content">
+
+  <div id="searchRides">
+    <mat-card id="searchRidesCard">
+      <div id="searchFields">
+        <mat-form-field class="Fields">
+          <input matInput id="rideDriver" #input type="text" placeholder="Driver Name"
+                 (input)="rideDriver = $event.target.value">
+        </mat-form-field>
+        <mat-form-field class="Fields">
+          <input matInput id="rideDestination" #input type="text" placeholder="Destination"
+                 (input)="rideDestination = $event.target.value">
+        </mat-form-field>
+        <mat-form-field class="Fields">
+          <input matInput id="rideOrigin" #input type="text" placeholder="Starting Point"
+                 (input)="rideOrigin = $event.target.value">
+        </mat-form-field>
+
+        <mat-form-field class="Fields">
+          <input matInput id="rideDeparture" #input type="text" placeholder="Departure Time"
+                 (input)="rideDeparture = $event.target.value">
+        </mat-form-field>
+      </div>
+      <div>
+      </div>
+    </mat-card>
+    <div id="addNewRideDiv">
+      <button id="addNewRide" mat-raised-button (click)="openDialog()">Add a New Ride</button>
+    </div>
+  </div>
+
+
+<div id="main">
+  <div id="anodis">
+    <mat-card id="display">
+      <mat-card-content id="ride-list-title">Rides</mat-card-content>
+      <mat-divider></mat-divider>
+      <mat-card-content>
+
+        <div id="ride-container" *ngIf="rides; else rideError">
+          <mat-card #elem class="ride" [id]="ride._id['$oid']" *ngFor="let ride of this.filterRides(rideDriver, rideDestination, rideOrigin, rideDeparture )">
+            <mat-card-title id="rideTitle">
+              Driver Name: {{ride.driver}}
+            </mat-card-title>
+            <mat-card-content>
+              Starting Point: {{ride.origin}}
+            </mat-card-content>
+            <mat-divider></mat-divider>
+            <mat-card-content id="destination">
+              <p>Destination: {{ride.destination}}</p>
+             <mat-card-content>
+               Departure: {{ride.departure}}
+             </mat-card-content>
+              <mat-accordion *ngIf="rides" [id]="ride.notes">
+                <mat-expansion-panel>
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                      Description
+                    </mat-panel-title>
+                  </mat-expansion-panel-header>
+                  <mat-panel-description>Notes: {{ride.notes}}</mat-panel-description>
+                </mat-expansion-panel>
+              </mat-accordion>
+            </mat-card-content>
+          </mat-card>
+        </div>
+        <ng-template #rideError>
+          <mat-error>
+            There was a problem loading the rides. Possibly the server is down or perhaps there are network
+            issues.
+          </mat-error>
+          <mat-error>
+            Please wait a bit and try again or start the server.
+          </mat-error>
+        </ng-template>
+      </mat-card-content>
+
+    </mat-card>
+
+
+
+  </div>
+</div>
+  <div id="searchRidesP">
+    <mat-card id="searchRidesCardP">
+      <button id="addNewRideP" mat-raised-button (click)="openDialog()">+</button>
+      <div id="searchFieldsP">
+
+        <mat-form-field class="FieldsP">
+          <input matInput id="rideDriverP" #input type="text" placeholder="Driver Name"
+                 (input)="rideDriver = $event.target.value">
+        </mat-form-field>
+        <mat-form-field class="FieldsP">
+          <input matInput id="rideDestinationP" #input type="text" placeholder="Destination"
+                 (input)="rideDestination = $event.target.value">
+        </mat-form-field>
+        <mat-form-field class="FieldsP">
+          <input matInput id="rideOriginP" #input type="text" placeholder="Starting Point"
+                 (input)="rideOrigin = $event.target.value">
+        </mat-form-field>
+
+        <mat-form-field class="FieldsP">
+          <input matInput id="rideDepartureP" #input type="text" placeholder="Departure Time"
+                 (input)="rideDeparture = $event.target.value">
+        </mat-form-field>
+      </div>
+      <div>
+      </div>
+    </mat-card>
+
+
+  </div>
+
+  <div id="mainP">
+    <div id="anodisP">
+      <mat-card id="displayP">
+        <mat-card-content id="ride-list-titleP">Rides</mat-card-content>
+        <mat-divider></mat-divider>
+        <mat-card-content>
+
+          <div id="ride-containerP" *ngIf="rides; else rideError">
+            <mat-card #elem class="ride" [id]="ride._id['$oid']" *ngFor="let ride of this.filterRides(rideDriver, rideDestination, rideOrigin, rideDeparture )">
+              <mat-card-title id="rideTitleP">
+                Driver Name: {{ride.driver}}
+              </mat-card-title>
+              <mat-card-content>
+                Starting Point: {{ride.origin}}
+              </mat-card-content>
+              <mat-divider></mat-divider>
+              <mat-card-content id="destinationP">
+                <p>Destination: {{ride.destination}}</p>
+                <mat-card-content>
+                  Departure: {{ride.departure}}
+                </mat-card-content>
+                <mat-accordion *ngIf="rides" [id]="ride.notes">
+                  <mat-expansion-panel>
+                    <mat-expansion-panel-header>
+                      <mat-panel-title>
+                        Description
+                      </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <mat-panel-description>Notes: {{ride.notes}}</mat-panel-description>
+                  </mat-expansion-panel>
+                </mat-accordion>
+              </mat-card-content>
+            </mat-card>
+          </div>
+          <ng-template #rideError>
+            <mat-error>
+              There was a problem loading the rides. Possibly the server is down or perhaps there are network
+              issues.
+            </mat-error>
+            <mat-error>
+              Please wait a bit and try again or start the server.
+            </mat-error>
+          </ng-template>
+        </mat-card-content>
+      </mat-card>
+
+
+    </div>
+  </div>
+</div>

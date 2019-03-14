@@ -1,19 +1,22 @@
 <td-layout #layout>
-  <td-navigation-drawer id="navbar" flex sidenavTitle="Lab 4">
+  <td-navigation-drawer id="navbar">
     <mat-nav-list>
       <a mat-list-item [routerLink]="['/']" (click)="layout.close()" routerLinkActive="nav-active"
          [routerLinkActiveOptions]="{exact: true}">
         <mat-icon>home</mat-icon>
         Home</a>
-      <a mat-list-item [routerLink]="['/users']" (click)="layout.close()" routerLinkActive="nav-active">
+      <a mat-list-item [routerLink]="['/ride']" (click)="layout.close()" routerLinkActive="nav-active">
         <mat-icon>account_box</mat-icon>
-        Users</a>
+        Rides</a>
     </mat-nav-list>
   </td-navigation-drawer>
-  <td-layout-nav toolbarTitle="Mo-Ride" navigationRoute="/">
+  <td-layout-nav toolbarTitle="" navigationRoute="/">
     <button mat-icon-button td-menu-button tdLayoutToggle>
+
       <mat-icon>menu</mat-icon>
+      <img id="logo" src="assets/img/logo4.png"/>
     </button>
     <router-outlet></router-outlet>
   </td-layout-nav>
+
 </td-layout>
