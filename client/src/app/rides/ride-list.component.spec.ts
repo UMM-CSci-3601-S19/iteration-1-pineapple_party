@@ -26,7 +26,7 @@ describe('Display rides', () => {
           destination: "Willies",
           origin: "Campus",
           // roundTrip: true,
-          departure: "10/08/2019 3:45",
+          departure: "3:45PM",
           // notes: "getting chips"
         },
         {_id: "12",
@@ -35,7 +35,7 @@ describe('Display rides', () => {
           destination: "Bremer",
           origin: "Campus",
           // roundTrip: true,
-          departure: "10/08/2019 8:45",
+          departure: "8:45PM",
           // notes: "getting coins"
         },
          {_id: "3",
@@ -44,7 +44,7 @@ describe('Display rides', () => {
           destination: "St Cloud",
           origin: "4th street",
           // roundTrip: false,
-          departure: "12/18/2019 20:45",
+          departure: "20:45",
           // notes: "going home for winter break"
         }
       ])

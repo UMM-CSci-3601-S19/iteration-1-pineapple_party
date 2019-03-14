@@ -2,7 +2,6 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { Ride } from "./ride";
 import { RideComponent } from './ride.component';
 import { RideListService } from './ride-list.service';
-import {RideListComponent} from "./ride-list.component";
 import { Observable } from 'rxjs/Observable';
 import { CustomModule } from "../custom.module";
 
@@ -13,7 +12,7 @@ describe('Ride Component', () => {
   let fixture: ComponentFixture<RideComponent>;
 
   let rideListServiceStub: {
-    getRideById: (rideId: sting) => Observable<Ride>
+    getRideById: (rideId: string) => Observable<Ride>
   };
 
   beforeEach(() => {
