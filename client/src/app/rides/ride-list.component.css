@@ -1,6 +1,8 @@
+#main{
+  width: 80%;
+}
 #ride-container{
 }
-
 #rideTitle{
   font-size: 14px;
 }
@@ -9,21 +11,12 @@
 }
 #ride-list-title {
   height: 50px;
-}
-
-.true{
-  float: right;
-  color: lawngreen;
-}
-.false{
-  float: right;
-  color: red;
+  font-size: 45px;
 }
 
 #display {
-  width: 700px;
+  width: 100%;
   margin-top: 20px;
-
 }
 #anodis{
   margin: 10px;
@@ -49,32 +42,66 @@
   width: 215px;
   height: 50px;
 }
-#addNewRideP{
+#addNewRideDiv{
+  float: right;
   margin: 10px;
   font-size: 25px;
   border-radius: 20px;
   width: 215px;
   height: 50px;
 }
+
 #content {
   background-color: gray;
 }
+
 #mainP {
   display: none;
+  width: 98%;
+}
+#ride-list-titleP{
+  font-size: 30px;
+}
+#anodisP{
+  width: 98%;
 }
 #searchRidesP {
   display: none;
 }
+#searchRidesCardP{
+  margin: 0px;
+  padding-left: 15px;
+}
+.FieldsP{
+  width: 70px;
+  font-size: 10px;
+}
+#displayP{
+  width: 98%;
+}
+#searchFieldsP{
+}
 #addNewRideP {
   display: none;
+  background-color: #2f74ce;
+  margin: 5px;
+  font-size: 50px;
+  border-radius: 150px;
+  width: 0px;
+  height: 35px;
+  float: right;
 }
-@media only screen and (max-device-width:1000px ){
-  #searchRidesP {display: block
-
+@media only screen and (min-device-width: 1000px){
+  #main{
+    width: 75%;
   }
+}
+@media only screen and (max-device-width:1000px){
+  #searchRidesP {display: block}
   #searchRides {display: none}
   #addNewRideP {display: block}
   #addNewRide {display: none}
   #mainP {display: block}
   #main {display: none}
 }
+
