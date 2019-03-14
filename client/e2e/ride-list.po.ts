@@ -52,8 +52,8 @@ export class RidePage {
   }
 
   getUniqueRide(driver: string) {
-    const ride = element(by.id(driver)).element(by.id('rideTitle')).getText();
-    this.highlightElement(by.id(driver));
+    const ride = element(by.id('rideTitle')).getText();//element(by.id(driver)).
+    this.highlightElement(by.id('rideTitle'));
 
     return ride;
   }

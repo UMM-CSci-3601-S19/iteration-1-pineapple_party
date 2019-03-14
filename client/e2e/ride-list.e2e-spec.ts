@@ -16,7 +16,7 @@ browser.driver.controlFlow().execute = function () {
   // If you're tired of it taking long you can remove this call or change the delay
   // to something smaller (even 0).
   origFn.call(browser.driver.controlFlow(), () => {
-    return protractor.promise.delayed(0);
+    return protractor.promise.delayed(100);
   });
 
   return origFn.apply(browser.driver.controlFlow(), args);
@@ -161,6 +161,7 @@ describe('Ride list', () => {
 
       it('Should show the validation error message about destination being required', () => {
         expect(element(by.id('destinationField')).isPresent()).toBeTruthy('There should be an destination field');
+        page.field('destinationField').click();
         page.field('destinationField').clear();
         expect(page.button('confirmAddRideButton').isEnabled()).toBe(false);
         //clicking somewhere else will make the error appear
@@ -173,6 +174,7 @@ describe('Ride list', () => {
         // '\b' is a backspace, so this enters an 'A' and removes it so this
         // field is "dirty", i.e., it's seen as having changed so the validation
         // tests are run.
+        page.field('driverField').click();
         page.field('driverField').sendKeys('A\b');
         expect(page.button('confirmAddRideButton').isEnabled()).toBe(false);
         //clicking somewhere else will make the error appear

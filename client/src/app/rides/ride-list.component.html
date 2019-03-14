@@ -39,16 +39,16 @@
 
         <div id="ride-container" *ngIf="rides; else rideError">
           <mat-card #elem class="ride" [id]="ride._id['$oid']" *ngFor="let ride of this.filterRides(rideDriver, rideDestination, rideOrigin, rideDeparture )">
-            <mat-card-title id="rideTitle">
+            <mat-card-title id="displayDriver">
               Driver Name: {{ride.driver}}
             </mat-card-title>
-            <mat-card-content>
+            <mat-card-content id="displayOrigin">
               Starting Point: {{ride.origin}}
             </mat-card-content>
             <mat-divider></mat-divider>
-            <mat-card-content id="destination">
+            <mat-card-content id="displayDestination">
               <p>Destination: {{ride.destination}}</p>
-             <mat-card-content>
+             <mat-card-content id="displayDeparture">
                Departure: {{ride.departure}}
              </mat-card-content>
               <!--<mat-accordion *ngIf="rides" [id]="ride.notes">-->
