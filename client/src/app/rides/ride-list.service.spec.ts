@@ -48,7 +48,7 @@ describe('Ride List Service', () => {
 
     it('getRides() calls api/rides', () => {
       rideListService.getRides().subscribe(
-        ride => expect(<Function>ride).toBe(testRides)
+        ride => expect(ride).toBe(testRides)
       );
       const req = httpTestingController.expectOne(rideListService.baseUrl);
       expect(req.request.method).toEqual('GET');
