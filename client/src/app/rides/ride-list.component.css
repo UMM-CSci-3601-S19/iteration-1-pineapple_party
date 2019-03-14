@@ -7,6 +7,9 @@
 #destination {
   font-size: larger;
 }
+#ride-list-title {
+  height: 50px;
+}
 
 .true{
   float: right;
@@ -17,3 +20,61 @@
   color: red;
 }
 
+#display {
+  width: 700px;
+  margin-top: 20px;
+
+}
+#anodis{
+  margin: 10px;
+  width: 100%;
+}
+#searchRides{
+  float: right;
+  margin-right: 10px;
+}
+#searchRidesCard {
+  padding-left: 15px;
+  width: 200px;
+  height: 350px;
+  margin-top: 30px;
+  border-radius: 40px;
+  position: relative;
+}
+#addNewRide{
+  float: right;
+  margin: 10px;
+  font-size: 25px;
+  border-radius: 20px;
+  width: 215px;
+  height: 50px;
+}
+#addNewRideP{
+  margin: 10px;
+  font-size: 25px;
+  border-radius: 20px;
+  width: 215px;
+  height: 50px;
+}
+#content {
+  background-color: gray;
+}
+#mainP {
+  display: none;
+}
+#searchRidesP {
+  display: none;
+}
+#addNewRideP {
+  display: none;
+}
+@media only screen and (max-device-width:1000px ){
+  #searchRidesP {display: block
+
+  }
+  #searchRides {display: none}
+  #addNewRideP {display: block}
+  #addNewRide {display: none}
+  #mainP {display: block}
+  #main {display: none}
+}
